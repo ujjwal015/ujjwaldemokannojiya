@@ -16,10 +16,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Integration testing'){
-
+        stage('Static code analysis'){
             steps{
-                sh 'mvn -DiskUnitTests'
+                withSonarQubeEnv(credentialsId: 'sonar-api') {
+                 sh 'mvn clean package sonar:sonar'
             }
         }
     }
