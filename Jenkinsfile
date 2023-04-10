@@ -10,10 +10,16 @@ pipeline {
               git 'https://github.com/ujjwal015/ujjwaldemokannojiya.git'
             }
         }
-        stage('UNIT Testing'){
+        stages('UNIT Testing'){
             
             steps{
                 sh 'mvn test'
+            }
+        }
+        stages('Integration testing'){
+
+            steps{
+                sh 'mvn -DiskUnitTests'
             }
         }
     }
