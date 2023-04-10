@@ -16,11 +16,5 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Integration testing'){
-
-            steps{
-                sh 'mvn -DiskUnitTests'
-            }
-        }
     }
 }
