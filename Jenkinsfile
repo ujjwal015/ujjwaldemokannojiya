@@ -7,8 +7,13 @@ pipeline {
         stage('Git Checkout'){
 
             steps{
-                git 'https://github.com/ujjwal015/ujjwaldemokannojiya.git'
-
+              git 'https://github.com/ujjwal015/ujjwaldemokannojiya.git'
+            }
+        }
+        stages('UNIT Testing'){
+            
+            steps{
+                sh 'mvn test'
             }
         }
     }
