@@ -1,12 +1,26 @@
 pipeline {
-  agent any
- 
-  tools {
-  maven 'Maven3'
-  }
-  stages {
-    stage ('Build') {
-      steps {
-      sh 'mvn clean install -f todoApp/pom.xml'
-      }
+
+    agent any
+
+    stages{
+
+        stage('Git Checkout'){
+
+            steps{
+              git 'https://github.com/ujjwal015/ujjwaldemokannojiya.git'
+            }
+        }
+        stage('UNIT Testing'){
+            
+            steps{
+                sh 'mvn test'
+            }
+        }
+        stage('Integration testing'){
+
+            steps{
+                sh 'mvn -DiskUnitTests'
+            }
+        }
     }
+}
